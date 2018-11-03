@@ -13,7 +13,7 @@ describe "static pages" do
       expect(page).to have_link "Ruby on Rails Tutorial"
     end
 
-    scenario " has a title" do
+    scenario "has a title" do
       visit static_pages_home_path
       expect(page).to have_title "Home | #{@base_title}"
     end
@@ -51,6 +51,21 @@ describe "static pages" do
       visit static_pages_about_path
 
       expect(page).to have_title "About | #{@base_title}"
+    end
+  end
+
+  feature "contact page" do
+    scenario "shows contact page with some people" do
+      visit static_pages_contact_path
+
+      expect(page).to have_content "Contact"
+      expect(page).to have_link "contact page"
+    end
+
+    scenario "has a title" do
+      visit static_pages_contact_path
+
+      expect(page).to have_title "Contact | #{@base_title}"
     end
   end
 end
