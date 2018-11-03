@@ -5,6 +5,14 @@ describe "static pages" do
       @base_title = "Ruby on Rails Tutorial Sample App"
     end
 
+  feature "root" do
+    scenario "directs to home" do
+      visit root_path
+
+      expect(page).to have_content "Sample App"
+    end
+  end
+
   feature "home page" do
     scenario "shows home page and link to sources" do
       visit static_pages_home_path
