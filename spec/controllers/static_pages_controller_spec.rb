@@ -23,7 +23,7 @@ describe "static pages" do
 
     scenario "has a title" do
       visit static_pages_home_path
-      expect(page).to have_title "Home | #{@base_title}"
+      expect(page).to have_title "#{@base_title}"
     end
 
   end
