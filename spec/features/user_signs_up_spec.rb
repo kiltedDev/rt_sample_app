@@ -16,7 +16,7 @@ feature 'user sign up', %(
     expect(page).to_not have_content("Log Out")
   end
 
-  scenario 'user fails to enter information' do
+  scenario 'user enters correct information' do
     fill_in 'Name', with: 'First Last'
     fill_in 'Email', with: 'user@example.com'
     fill_in 'user_password', with: 'password'
