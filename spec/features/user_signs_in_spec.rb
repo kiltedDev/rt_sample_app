@@ -5,7 +5,7 @@ feature 'user sign in', %(
 ) do
 
   before(:each) do
-    @bob = User.create()
+    @bob = create(:user)
     visit login_path
   end
 
@@ -15,9 +15,16 @@ feature 'user sign in', %(
     expect(page).to have_content("Invalid email/password combination")
 
     click_link "Home"
-    expect(page).to have_content("Invalid email/password combination")
+    expect(page).to_not have_content("Invalid email/password combination")
   end
 
   scenario 'user logs in correctly' do
+    fill_in 'Email', with: @bob.email
+    fill_in 'Password', with: @bob.password
+
+    click_button "Log in"
+
+    expect(page).to have_content("Welcome to the Sample App")
+    expect(page).to_not have_content("Invalid email/password combination")
   end
 end
