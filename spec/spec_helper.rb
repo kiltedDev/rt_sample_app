@@ -14,6 +14,14 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+def log_in_as(user)
+  visit login_path
+  fill_in 'Email', with: user.email
+  fill_in 'Password', with: user.password
+
+  click_button "Log in"
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

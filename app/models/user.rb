@@ -2,7 +2,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
-  validates :password, presence: true, length: { minimum: 8, maximum: 64 }
+  validates :password, presence: true, length: { minimum: 8, maximum: 64 }, allow_nil: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true,
                     length: { maximum: 255 },
@@ -35,5 +35,10 @@ class User < ApplicationRecord
   def authenticated?(remember_token)
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
   end
 end

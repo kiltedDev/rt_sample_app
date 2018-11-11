@@ -20,12 +20,12 @@ feature 'user sign up', %(
     fill_in 'Name', with: 'First Last'
     fill_in 'Email', with: 'user@example.com'
     fill_in 'user_password', with: 'password'
-    fill_in 'Confirmation', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
 
     click_button 'Create my account'
 
     expect(page).to have_content("Welcome to the Sample App!")
     expect(page).to have_content("First Last")
-    # expect(page).to have_content("Log Out")
+    expect(page).to have_content("Log out")
   end
 end

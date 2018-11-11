@@ -12,7 +12,7 @@ feature 'navigation', %(
     expect(page).to have_link("sample app", href: root_path)
     expect(page).to have_link("Home", href: root_path)
     expect(page).to have_link("Help", href: help_path)
-    # expect(page).to have_link("Log In", href: login_path)
+    expect(page).to have_link("Log in", href: login_path)
 
   end
 

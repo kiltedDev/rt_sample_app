@@ -13,9 +13,6 @@ feature 'user sign in', %(
     click_button "Log in"
 
     expect(page).to have_content("Invalid email/password combination")
-
-    click_link "Home"
-    expect(page).to_not have_content("Invalid email/password combination")
   end
 
   scenario 'user logs in correctly' do
@@ -23,7 +20,6 @@ feature 'user sign in', %(
     fill_in 'Password', with: @bob.password
 
     click_button "Log in"
-
     expect(page).to have_content("Welcome to the Sample App")
     expect(page).to_not have_content("Invalid email/password combination")
   end
