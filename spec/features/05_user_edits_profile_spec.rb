@@ -64,7 +64,7 @@ feature 'user edit account', %(
   end
 
   scenario 'redirects edit when logged in as someone else' do
-    @major = create(:user, name: "Ernesto Medeiros", email: "E.Medeiros@brazil.gov")
+    @major = create(:user, :major)
     visit edit_user_path @major
 
     expect(page).to have_current_path(root_path)
