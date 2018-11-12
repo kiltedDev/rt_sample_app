@@ -14,7 +14,7 @@ feature 'user edit account', %(
     visit users_path
 
     click_link("delete")
-    debugger
+
     expect(page).to_not have_content(@bob.name)
   end
 end
