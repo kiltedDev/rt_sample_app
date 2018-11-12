@@ -81,6 +81,6 @@ RSpec.describe User, type: :model do
   end
 
   it "is not authenticated with a nil digest" do
-    expect(@bob.authenticated?('')).to be(false)
+    expect(@bob.authenticated?(:remember, '')).to be(false)
   end
 end
