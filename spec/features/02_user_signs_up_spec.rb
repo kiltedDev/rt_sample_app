@@ -24,8 +24,8 @@ feature 'user sign up', %(
 
     click_button 'Create my account'
 
-    expect(page).to have_content("Welcome to the Sample App!")
-    expect(page).to have_content("First Last")
-    expect(page).to have_content("Log out")
+    expect(page).to have_content("Please check your email to activate your account.")
+    # expect(page).to have_content("First Last")
+    # expect(page).to have_content("Log out")
   end
 end

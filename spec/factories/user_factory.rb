@@ -3,6 +3,8 @@ FactoryBot.define do
     name { "Bob Johansson" }
     email  { "thebob@bob.net" }
     password { "password" }
+    activated { true }
+    activated_at { Time.zone.now }
   end
 
   trait :major do
