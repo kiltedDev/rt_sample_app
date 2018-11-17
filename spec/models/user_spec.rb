@@ -83,4 +83,15 @@ RSpec.describe User, type: :model do
   it "is not authenticated with a nil digest" do
     expect(@bob.authenticated?(:remember, '')).to be(false)
   end
+
+  it "is able to follow and unfollow a user" do
+    medeiros = create(:user, :major)
+    expect(@bob.following.count).to eq(0)
+    @bob.follow(medeiros)
+    expect(@bob.following.count).to eq(1)
+    expect(@bob.following?(medeiros)).to be(true)
+    expect(medeiros.followers.include?(@bob)).to be(true)
+    @bob.unfollow(medeiros)
+    expect(@bob.following.count).to eq(0)
+  end
 end
