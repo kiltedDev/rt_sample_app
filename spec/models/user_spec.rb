@@ -94,4 +94,23 @@ RSpec.describe User, type: :model do
     @bob.unfollow(medeiros)
     expect(@bob.following.count).to eq(0)
   end
+
+  it "has the correct posts in it's feed" do
+    @medeiros = create(:user, :major)
+    @butterworth = create(:user, :butterworth)
+    @bob.follow(@medeiros)
+
+    10.times do
+      create(:micropost, user_id: @medeiros.id)
+    end
+
+    @medeiros.microposts.each do |post|
+      # self
+      expect(@medeiros.feed.include?(post)).to be true
+      # follower
+      expect(@bob.feed.include?(post)).to be true
+      # not follower
+      expect(@butterworth.feed.include?(post)).to be false
+    end
+  end
 end
