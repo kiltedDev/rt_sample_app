@@ -14,7 +14,7 @@ RSpec.describe RelationshipsController, type: :controller do
     end
 
     it "creates a following relationship" do
-      log_in @bob
+      session[:user_id] = @bob.id
       post :create, params: { follower_id: @bob.id, followed_id: @medeiros.id }
 
       expect(@bob.following.first).to eq(@medeiros)
@@ -24,16 +24,16 @@ RSpec.describe RelationshipsController, type: :controller do
   describe "#destroy" do
     it "redirects to login if not logged in" do
       @bob.follow(@medeiros)
-      rel = @bob.following.find_by(id: @medeiros.id)
+      rel = Relationship.last
       post :destroy, params: { id: rel.id }
 
       expect(response).to redirect_to(login_path)
     end
 
     it "unfollows the user" do
-      log_in_as(@bob)
+      session[:user_id] = @bob.id
       @bob.follow(@medeiros)
-      rel = @bob.following.find_by(id: @medeiros.id)
+      rel = Relationship.last
       post :destroy, params: { id: rel.id }
 
       expect(@bob.following.count).to eq(0)
