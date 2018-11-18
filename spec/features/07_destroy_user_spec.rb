@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'user edit account', %(
-  As a user, I want to be able to edit my account.
+feature 'user destroy account', %(
+  As a user, I want to be able to destroy my account.
 ) do
 
   before(:each) do

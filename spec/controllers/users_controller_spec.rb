@@ -21,7 +21,7 @@ RSpec.describe UsersController, type: :controller do
         admin: 1
       }
       patch :update, params: form_params
-      
+
       @bob.reload
       expect(@bob.admin).to eq(false)
     end

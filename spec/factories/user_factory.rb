@@ -13,7 +13,7 @@ FactoryBot.define do
   end
 
   trait :butterworth do
-    name { "Colnel Butterworth" }
+    name { "Colonel Butterworth" }
     email  { "notbob@bob.net" }
     admin { true }
   end
